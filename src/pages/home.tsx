@@ -7,24 +7,24 @@ import { changeValue } from "../store/features/gameslice";
 function Home() {
   const dispatch = useDispatch();
 
-  const [playerCount, setPlayerCount] = useState<3 | 4 | null>(null);
+  const [playerCount, setPlayerCount] = useState<3 | 4 | 0>(0);
   const [square, setSquare] = useState("#fff");
   const [bg, setBg] = useState("#000");
   const navigation = useNavigate();
 
   const start = () => {
-    if (playerCount != null) {
+    if (playerCount != 0) {
       navigation("/game");
       dispatch(changeValue([square, bg, playerCount]));
     }
   };
 
-  const getPlayer = (e) => {
+  const getPlayer = (e:any) => {
     if (e.target.style.backgroundColor == "rgb(38, 20, 130)") {
-      setPlayerCount(null);
+      setPlayerCount(0);
       e.target.style.backgroundColor = "rgb(32, 96, 214)";
     } else if (e.target.style.backgroundColor == "rgb(32, 96, 214)") {
-      setPlayerCount(Number(e.target.innerText));
+      setPlayerCount(e.target.innerText);
 
       e.target.style.backgroundColor = "rgb(38, 20, 130)";
     }
@@ -64,7 +64,7 @@ function Home() {
           </div>
         </div>
         <div>
-          <h2 className="m-7 text-2xl">Select Players</h2>
+          <h2 className="m-7 text-2xl">Select Squares</h2>
           <div className="flex justify-center gap-10 text-2xl">
             <button
               disabled={playerCount == 4}

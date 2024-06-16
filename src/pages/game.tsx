@@ -7,7 +7,7 @@ import Square from "../components/square";
 import { useSelector } from "react-redux";
 
 function Game() {
-  const { bg, playerCount } = useSelector((state) => state);
+  const { bg, playerCount } = useSelector((state):any => state);
   const [currentPlayer, setCurrentPlayer] = useState("x");
   const [click, setClick] = useState(0);
   const [player1, setPlayer1] = useState({
@@ -70,7 +70,7 @@ function Game() {
       ];
     }
   };
-  const checkTable = (newBoard, item, win) => {
+  const checkTable = (newBoard:any, item:any, win:any) => {
     if (win.length != 10) {
       return (
         newBoard[item[0]] === newBoard[item[1]] &&
@@ -87,7 +87,7 @@ function Game() {
     }
   };
 
-  const getWinner = (newBoard) => {
+  const getWinner = (newBoard:any) => {
     const win = getTable();
 
     // win.forEach((item) => {

@@ -1,11 +1,17 @@
 import { useSelector } from "react-redux";
 
-function Square({ value, onClick }) {
-  const { square, bg } = useSelector((state) => state);
+interface SquareProps {
+  value: string;
+  onClick: () => void;
+}
+function Square({ value, onClick }:SquareProps) {
+  
+  const { square, bg } = useSelector((state:any) => state);
   return (
     <div
-      style={{
+      style={{boxShadow: "-1px 2px 22px 0px rgba(55,0,125,0.78)",
         backgroundColor: square,
+        textShadow: "0px 0px 11px rgba(17,0,167,0.89)",
         color: bg,
         height: "6rem",
         width: "6rem",
